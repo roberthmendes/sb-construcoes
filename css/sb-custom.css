@@ -17,24 +17,148 @@
 .sb-whatsapp {
   position: fixed;
   left: 30px;
-  bottom: 45px;
-  z-index: 99;
-  width: 54px;
-  height: 54px;
+  bottom: 40px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.sb-whatsapp__icon {
+  position: relative;
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   background-color: #25d366;
   color: #fff;
-  font-size: 28px;
+  font-size: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, .35);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, .45), 0 4px 12px rgba(0, 0, 0, .35);
   transition: transform .3s ease;
+  animation: sb-wa-shake 6s ease-in-out 3s infinite;
 }
 
-.sb-whatsapp:hover {
+/* Anéis pulsando */
+.sb-whatsapp__icon::before,
+.sb-whatsapp__icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid #25d366;
+  animation: sb-wa-pulse 2s ease-out infinite;
+  z-index: -1;
+}
+
+.sb-whatsapp__icon::after {
+  animation-delay: 1s;
+}
+
+/* Selo de notificação */
+.sb-whatsapp__badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ff3b30;
+  border: 2px solid #fff;
   color: #fff;
-  transform: scale(1.08);
+  font: 700 11px/16px var(--tecture-font);
+  text-align: center;
+}
+
+/* Balão de texto */
+.sb-whatsapp__label {
+  position: relative;
+  background-color: #fff;
+  color: #1B2A41;
+  padding: 10px 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .3);
+  font: 600 15px/1.25 var(--tecture-font);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: sb-wa-label-in .5s ease 2s forwards;
+}
+
+.sb-whatsapp__label small {
+  display: block;
+  font-weight: 400;
+  font-size: 13px;
+  color: #5B6570;
+}
+
+.sb-whatsapp__label::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 50%;
+  margin-top: -7px;
+  border-width: 7px 8px 7px 0;
+  border-style: solid;
+  border-color: transparent #fff transparent transparent;
+}
+
+.sb-whatsapp:hover .sb-whatsapp__icon {
+  transform: scale(1.1);
+}
+
+.sb-whatsapp:hover .sb-whatsapp__label {
+  color: #25a855;
+}
+
+@keyframes sb-wa-pulse {
+  0% {
+    transform: scale(1);
+    opacity: .8;
+  }
+
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+@keyframes sb-wa-shake {
+  0%, 88%, 100% {
+    transform: rotate(0);
+  }
+
+  90%, 94%, 98% {
+    transform: rotate(-12deg);
+  }
+
+  92%, 96% {
+    transform: rotate(12deg);
+  }
+}
+
+@keyframes sb-wa-label-in {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sb-whatsapp__icon,
+  .sb-whatsapp__icon::before,
+  .sb-whatsapp__icon::after {
+    animation: none;
+  }
+
+  .sb-whatsapp__label {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Seção de contato */
@@ -147,6 +271,22 @@
   .sb-whatsapp {
     left: 16px;
     bottom: 20px;
+  }
+
+  .sb-whatsapp__icon {
+    flex-basis: 58px;
+    width: 58px;
+    height: 58px;
+    font-size: 30px;
+  }
+
+  .sb-whatsapp__label {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .sb-whatsapp__label small {
+    display: none;
   }
 }
 
