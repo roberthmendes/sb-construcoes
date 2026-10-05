@@ -4,10 +4,10 @@
 
 /* Logo */
 .main-menu__logo {
-  background-color: #1B2A41;
+  background-color: #ffffff;
 }
 
-/* sem a textura do template, para o fundo azul da logo emendar com o quadro */
+/* sem a textura do template sobre o quadro branco da logo */
 .main-menu__logo .section-shape-1 {
   display: none;
 }
