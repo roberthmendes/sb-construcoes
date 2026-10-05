@@ -140,6 +140,35 @@
   }
 }
 
+@keyframes sb-wa-pulse-sm {
+  0% {
+    transform: scale(1);
+    opacity: .7;
+  }
+
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+@keyframes sb-wa-label-peek {
+  0% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+
+  8%, 85% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+}
+
 @keyframes sb-wa-label-in {
   to {
     opacity: 1;
@@ -268,24 +297,48 @@
     padding: 28px 20px;
   }
 
+  /* No celular: canto inferior direito (onde o polegar alcança) */
   .sb-whatsapp {
-    left: 16px;
-    bottom: 20px;
+    left: auto;
+    right: 18px;
+    bottom: calc(22px + env(safe-area-inset-bottom));
+    flex-direction: row-reverse;
   }
 
   .sb-whatsapp__icon {
-    flex-basis: 58px;
-    width: 58px;
-    height: 58px;
+    flex-basis: 56px;
+    width: 56px;
+    height: 56px;
     font-size: 30px;
   }
 
+  .sb-whatsapp__icon::before,
+  .sb-whatsapp__icon::after {
+    animation-name: sb-wa-pulse-sm;
+  }
+
+  /* Balão aparece por alguns segundos e some, para não cobrir o conteúdo */
   .sb-whatsapp__label {
     font-size: 14px;
     padding: 8px 12px;
+    transform: translateX(10px);
+    pointer-events: none;
+    animation: sb-wa-label-peek 7s ease 2s forwards;
   }
 
   .sb-whatsapp__label small {
+    display: none;
+  }
+
+  .sb-whatsapp__label::before {
+    left: auto;
+    right: -7px;
+    border-width: 7px 0 7px 8px;
+    border-color: transparent transparent transparent #fff;
+  }
+
+  /* O "voltar ao topo" ocuparia o mesmo canto */
+  .scroll-to-top {
     display: none;
   }
 }
@@ -294,4 +347,10 @@
 .preloader__image {
   background-image: url(../logo-sb/sb-logo-principal.svg);
   background-size: 140px auto;
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .sb-whatsapp__label {
+    display: none;
+  }
 }
