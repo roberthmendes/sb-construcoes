@@ -3,13 +3,22 @@
    ========================================================== */
 
 /* Logo */
+.main-menu__logo {
+  background-color: #1B2A41;
+}
+
+/* sem a textura do template, para o fundo azul da logo emendar com o quadro */
+.main-menu__logo .section-shape-1 {
+  display: none;
+}
+
 .main-menu__logo img {
-  width: 190px;
+  width: 220px;
   height: auto;
 }
 
 .footer-widget__logo img {
-  width: 210px;
+  width: 180px;
   height: auto;
 }
 
@@ -345,12 +354,162 @@
 
 /* Tela de carregamento com a logo SB */
 .preloader__image {
-  background-image: url(../logo-sb/sb-logo-principal.svg);
-  background-size: 140px auto;
+  background-image: url(../logo-sb-site/01-principal-vertical.svg);
+  background-size: 180px auto;
 }
 
 @media (max-width: 767px) and (prefers-reduced-motion: reduce) {
   .sb-whatsapp__label {
     display: none;
   }
+}
+
+/* ==========================================================
+   Vídeos das obras
+   Cada vídeo fica dentro de uma moldura com proporção fixa
+   (9:16 vertical ou 16:9 horizontal) e object-fit: cover,
+   então vídeos de formatos diferentes não quebram o layout.
+   ========================================================== */
+.sb-videos {
+  position: relative;
+  display: block;
+  padding: 120px 0;
+  z-index: 1;
+}
+
+.sb-videos__top {
+  margin-bottom: 40px;
+  row-gap: 30px;
+}
+
+.sb-videos__text {
+  margin: 20px 0 30px;
+  max-width: 480px;
+}
+
+.sb-video {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: var(--tecture-black);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+
+.sb-video--tall {
+  aspect-ratio: 9 / 16;
+}
+
+.sb-video--wide {
+  aspect-ratio: 16 / 9;
+}
+
+.sb-video__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Carrossel de vídeos verticais (estilo Reels) */
+.sb-reels {
+  position: relative;
+}
+
+.sb-reels .swiper-container {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.sb-reels .swiper-slide.sb-video {
+  height: auto;
+}
+
+.sb-reels__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.sb-reels__btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--tecture-bdr-color);
+  background: transparent;
+  color: var(--tecture-white);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .3s ease, border-color .3s ease;
+}
+
+.sb-reels__btn:hover {
+  background-color: var(--tecture-base);
+  border-color: var(--tecture-base);
+}
+
+.sb-reels__btn.swiper-button-disabled {
+  opacity: .35;
+  pointer-events: none;
+}
+
+.sb-reels__pagination {
+  display: flex;
+  gap: 8px;
+  width: auto !important;
+}
+
+.sb-reels__pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  margin: 0 !important;
+  background-color: var(--tecture-white);
+  opacity: .35;
+  transition: width .3s ease, opacity .3s ease;
+}
+
+.sb-reels__pagination .swiper-pagination-bullet-active {
+  width: 24px;
+  border-radius: 4px;
+  background-color: var(--tecture-base);
+  opacity: 1;
+}
+
+.sb-video__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 40px 16px 14px;
+  background: linear-gradient(to top, rgba(10, 12, 9, .85), transparent);
+  color: var(--tecture-white);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .sb-videos {
+    padding: 80px 0;
+  }
+
+  .sb-video__caption {
+    font-size: 13px;
+    padding: 30px 10px 10px;
+  }
+}
+
+/* Galeria "Nossas Obras": todas as fotos na mesma moldura,
+   independente do formato original (horizontal, vertical...) */
+.projects-one__img img {
+  width: 100%;
+  aspect-ratio: 479 / 584;
+  object-fit: cover;
 }
