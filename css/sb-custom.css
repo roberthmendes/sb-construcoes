@@ -1,0 +1,157 @@
+/* ==========================================================
+   SB Construções — ajustes sobre o template
+   ========================================================== */
+
+/* Logo */
+.main-menu__logo img {
+  width: 190px;
+  height: auto;
+}
+
+.footer-widget__logo img {
+  width: 210px;
+  height: auto;
+}
+
+/* Botão flutuante do WhatsApp */
+.sb-whatsapp {
+  position: fixed;
+  left: 30px;
+  bottom: 45px;
+  z-index: 99;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: #25d366;
+  color: #fff;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .35);
+  transition: transform .3s ease;
+}
+
+.sb-whatsapp:hover {
+  color: #fff;
+  transform: scale(1.08);
+}
+
+/* Seção de contato */
+.sb-contact {
+  position: relative;
+  display: block;
+  padding: 120px 0 120px;
+  z-index: 1;
+}
+
+.sb-contact__info {
+  position: relative;
+  display: block;
+  margin-top: 30px;
+}
+
+.sb-contact__info li {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.sb-contact__info li + li {
+  margin-top: 28px;
+}
+
+.sb-contact__info .icon {
+  flex: 0 0 54px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--tecture-base);
+  color: var(--tecture-white);
+  font-size: 20px;
+}
+
+.sb-contact__info h4 {
+  font-size: 20px;
+  line-height: 1.3;
+  margin: 0 0 4px;
+  color: var(--tecture-white);
+}
+
+.sb-contact__info p,
+.sb-contact__info a {
+  margin: 0;
+  color: var(--tecture-gray);
+}
+
+.sb-contact__info a:hover {
+  color: var(--tecture-base);
+}
+
+.sb-contact__form {
+  position: relative;
+  display: block;
+  background-color: var(--tecture-black);
+  padding: 40px;
+  margin-top: 30px;
+}
+
+.sb-contact__form h3 {
+  font-size: 26px;
+  color: var(--tecture-white);
+  margin: 0 0 8px;
+}
+
+.sb-contact__form > p {
+  margin-bottom: 24px;
+}
+
+.sb-contact__form input,
+.sb-contact__form textarea {
+  width: 100%;
+  border: 1px solid var(--tecture-bdr-color);
+  background-color: transparent;
+  color: var(--tecture-white);
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  outline: none;
+  font-size: 16px;
+}
+
+.sb-contact__form input:focus,
+.sb-contact__form textarea:focus {
+  border-color: var(--tecture-base);
+}
+
+.sb-contact__form textarea {
+  height: 130px;
+  resize: vertical;
+}
+
+.sb-contact__form .thm-btn {
+  border: none;
+}
+
+@media (max-width: 767px) {
+  .sb-contact {
+    padding: 80px 0;
+  }
+
+  .sb-contact__form {
+    padding: 28px 20px;
+  }
+
+  .sb-whatsapp {
+    left: 16px;
+    bottom: 20px;
+  }
+}
+
+/* Tela de carregamento com a logo SB */
+.preloader__image {
+  background-image: url(../logo-sb/sb-logo-principal.svg);
+  background-size: 140px auto;
+}
